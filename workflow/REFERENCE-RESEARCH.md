@@ -20,4 +20,12 @@ For static treatment, screenshots suffice. For motion, observe actual playback o
 
 Assign stable reference IDs and screen/state/viewport IDs. Compare reference and design at comparable viewing scale and label contextual differences; do not stretch one to fake a match. Compare the dimensions relevant to this target, not pixel similarity to a different product. Give each chosen reference a short “learn / do not copy” note. Keep reference prestige separate from observed execution quality.
 
+## Component and interaction references
+
+When a core task depends on a complex or unfamiliar control, consult relevant official component demos while designing the sample. [MUI X Data Grid](https://mui.com/x/react-data-grid/) is a reference for dense tables, selection, filters and empty states. [shadcn/ui](https://ui.shadcn.com/docs/components/combobox) is a reference for patterns such as searchable selection, multiple values and no matches. Start with the product's existing system when the brief specifies one. Choose examples based on the task and the states the screen needs.
+
+Record the pattern, source and states studied in RESEARCH. Apply the selected direction's type, density, colors and shapes. Keep related controls consistent if their patterns come from different sources. Treat the pattern as a starting point for the product's task. For example, a generic dialog example can show dismissal and focus intent, while the task determines what the detail adds and whether inline disclosure would fit.
+
+Use a ready-made design component when a licensed asset is available through a supported FigCraft import and its needed layers, properties, states and instances remain usable. Verify a representative instance, including theme adaptation and a relevant difficult state, before reuse. Record the source and adopted component in DESIGN. When only code or a demo is available, use it as a reference and build the needed states in native FigCraft layers. Runtime behavior and any future package choice follow the brief and subsequent implementation.
+
 Sources checked 2026-11-15: [Inspo MCP tools and installation](https://inspomcp.dev/mcp), [Cook target and references](https://github.com/Leonxlnx/cook/blob/main/references/target-and-bar.md). These are research inputs, not newly installed skills or adopted upstream instructions.

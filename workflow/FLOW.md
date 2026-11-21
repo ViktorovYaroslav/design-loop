@@ -30,6 +30,8 @@ Use the selected character to choose references, and distinguish UI treatment fr
 
 Follow REFERENCE-RESEARCH.md. Inspo MCP is optional when available; it already supplies archive screenshots and does not require Playwright for static research. Use a capable existing browser connector only when actual live-reference behavior matters. Distinguish style inspiration from quality benchmarks and task examples. Never claim motion observation from a static image.
 
+Consult component examples from the brief's existing system or relevant libraries when a complex control matters to a core task. Carry the chosen pattern and required states into the samples. Apply the FigCraft reuse checks in REFERENCE-RESEARCH before adopting a ready-made design component.
+
 In RESEARCH record each source URL/path, the image actually viewed, how scale/hierarchy/type/density/imagery work, and the principle adapted to this product. A reference name is not analysis. Connect a concrete Taste recipe or principle to a decision and a screenshot. Reading template source is allowed; creating HTML solely to render examples is outside scope. Report unavailable images honestly.
 
 ## 3. Develop three directions on two screens each
@@ -43,7 +45,7 @@ Use the same product content in all directions. Each direction includes two desk
 
 Vary composition, typographic character, imagery and hierarchy, not just color. The visual idea must survive across both screens rather than depend on one map or photograph. Replace placeholders before presentation. Select imagery or data graphics for relevance, quality and clarity. For analytical products, charts and tables may lead; photography is not mandatory. Avoid introducing unsupported data. Preserve licenses and distinguish generated imagery from real photographs.
 
-Use frontend-design to critique specificity to the brief. Validate the composition in the chosen viewport model, including initial visible content and navigation anchors; do not judge only a tall full-page image. Return to Taste and compare execution with the references: identify where the proposal is weaker and improve it. Examine screenshots before showing work.
+Use frontend-design to critique specificity to the brief. In the chosen viewport model, check initial visible content and navigation anchors. Follow the comparison in PROGRESSIVE-BUILD before checkpoint 1. Review the whole first viewport, then a task-critical fragment at native scale. Use Taste to correct the priority gaps and recheck the affected screens before showing work.
 
 Before checkpoint 1, apply STYLE-CHARACTER's visible-character check and CHARACTER-AUDIT's recognizable-language criteria to both screens. Inspect sparse dominant blocks, useful detail/disclosure, reader-facing copy and graphic finish. Correct clear mismatches within the current rounds; do not call a generic recolored kit Fancy because the geometry is valid. Repeated controls must follow file-craft's persistent-layout procedure from construction onward.
 

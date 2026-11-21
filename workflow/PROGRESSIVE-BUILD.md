@@ -16,6 +16,14 @@ Use real content lengths from pass 1; do not postpone all data to pass 3. For a 
 
 For three candidate directions, settle their distinct compositions before expensive finishing. Finish both sample screens in each direction through passes 2–4 before checkpoint 1; users choose from convincing visual proposals, not unfinished wireframes. Do initial viewport/task sanity checks before showing them. Passes 5–7 are completed on the selected direction before checkpoint 2; motion remains proportional to the brief.
 
+## Compare composition and execution before checkpoint 1
+
+1. Start with the whole first viewport of each sample. Compare it with a relevant execution benchmark at a comparable viewing scale. Identify the content or visual element that best explains the product's main task, where the eye actually lands, and what competes with that element. Examine relative size, hierarchy and grouping. Look for a meaningful expression of the same direction on the companion screen.
+2. Inspect a representative high-risk fragment from each direction at 100% scale. Pick a fragment that matters to the task, such as a chart with its key state, a dense table with its actions, or an inspection panel. Compare the relevant type, spacing, contrast and state cues with a strong example. For a detail panel or overlay, check what information or action it adds and whether its footprint suits that purpose.
+3. Record 1–3 priority gaps for the correction round in the existing ROUNDS record, citing the frame/viewport and benchmark. Address composition or hierarchy first when it is the main gap, then compare the same view again. Keep a before/after pair for substantial changes. If a correction improves one screen, check what it does to the companion screen before presenting the pair.
+
+This comparison belongs to the existing composition and craft passes. During refinement or expansion, repeat it where a change affects the focal hierarchy or introduces a new high-risk pattern.
+
 Each correction round has one primary focus and 1–3 concrete gaps in docs/ROUNDS.md. Avoid changing layout, palette, typography and effects simultaneously during a polish round; a dependent fix is allowed and recorded. Capture before/after for meaningful decisions, not every node mutation. Check a representative screen before propagating source-component changes. If a change regresses the task or composition, revise or revert it rather than layering more effects over it.
 
 The designer chooses routine pass details and proceeds autonomously between existing checkpoints. No automatic browser implementation, animation code, extra screens or new design-file reset follows from this method.

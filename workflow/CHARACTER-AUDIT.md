@@ -13,6 +13,16 @@ The brief, explicit character preference and selected direction take precedence.
 - **Subject-specific graphics:** do charts, illustrations and icons clarify this product? Spot meaningless visual filler, unsupported smoothing, generic waves and fake data, not just glow/emoji.
 - **Copy:** remove repeated explanatory filler, generic headings and boilerplate when a concise contextual definition or tooltip would serve better. Preserve essential units, caveats and denominators.
 
+## Check specific layers in FigCraft
+
+Use the signals below to locate concrete fixes in the existing Unslop pass. Apply each check where it fits the task and selected character.
+
+- **Competing emphasis:** trace the strongest fills, gradients, shadows and actions across the first viewport. If the navigation, repeated buttons or decorative surfaces compete with the main content, reduce their emphasis and recheck where the eye lands. Where two controls lead to the same action, make the contextual entry point primary and review whether the other entry point still helps.
+- **Repetition and optical finish:** compare recurring cards and controls at 100%. Trace gaps and radii back to their roles or shared tokens. Recheck nested corners, repeated icon containers, and small tracked uppercase labels where they weaken hierarchy or legibility. Use values that fit the chosen system and content density.
+- **Content that earns the space:** read headlines, card labels, badges and metrics in context. Replace generic claims with specific product language, remove unsupported proof, and keep real metrics near what they describe. Inspect prominent cards and overlays for the information or action they add. Rework oversized containers around the content they need to hold.
+
+Use the existing audit record for the affected frame/layer, observed problem, fix and repeated screenshot. [Murphmaxxing's annotated landing-page example](https://www.murphmaxxing.com/vault/20-ui-tricks-fix-ai-slop-website) draws on Damir Sokolovsky's Unslop checklist and starting tokens. Treat its suggested sizes, colors and timing as examples for that context.
+
 ## Turn the audit into design decisions
 
 - **Recognizable language:** name the product/task relationship behind the visual device, then point to its expression on both sample screens. Swapping the name is a useful diagnostic, not proof that every shared convention is wrong. Familiar controls and library icons are desirable; the authored language should come from meaningful composition, typography, content graphics or states, not redrawing standard icons.

@@ -14,6 +14,11 @@
     "AGENTS.md",
     "dependencies.lock.json",
     "THIRD-PARTY-NOTICES.md",
+    "!.agents/skills/taste-skill/assets/**",
+    "!.agents/skills/taste-skill/scripts/**",
+    "!.agents/skills/ui-ux-pro-max/scripts/tests/**",
+    "!.agents/skills/unslop/agents/**",
+    "!.agents/skills/unslop/scripts/**",
     "!**/__pycache__/**",
     "!**/*.py[cod]"
   ],

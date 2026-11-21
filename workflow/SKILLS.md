@@ -19,7 +19,7 @@ Its control-layout procedure requires persistent auto layout/sizing for ordinary
 
 ## Environment and installation checks
 UI UX Pro Max uses Python 3 and the standard library. Invoke the project-local path from FLOW rather than upstream CLAUDE_PLUGIN_ROOT examples. Check --help and a focused query in the actual host environment; a historical check does not certify another machine.
-Taste includes assets, library, references and scripts. Its website/browser pipeline is not used for design-only work here; bundled tooling does not mean its browser gate passed. Check an upstream script's runtime requirements if separately using it.
+The standalone checkout contains the full Taste snapshot. The installed Design Loop skill carries its written references and design library, plus the Unslop reference images. For website-only demo media, use the pinned upstream source as a read-only reference when relevant. The design-only flow uses FigCraft evidence.
 
 ## Licenses
 - frontend-design: LICENSE.txt inside the installed skill.

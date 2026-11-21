@@ -3,30 +3,37 @@
 import { isUtf8 } from 'node:buffer';
 import { createHash } from 'node:crypto';
 import {
-  appendFileSync, cpSync, lstatSync, mkdirSync, readdirSync, readFileSync,
+  cpSync, lstatSync, mkdirSync, readdirSync, readFileSync,
   realpathSync, renameSync, rmSync, writeFileSync,
 } from 'node:fs';
-import { basename, join } from 'node:path';
+import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const source = fileURLToPath(new URL('../', import.meta.url));
 const project = realpathSync(process.cwd());
-const destination = join(project, '.design-loop');
+const skillPath = '.agents/skills/design-loop';
+const destination = join(project, skillPath);
 const lock = join(project, '.design-loop-install');
 const manifest = '.install-manifest.json';
-const marker = '<!-- design-loop -->';
 const payload = [
   '.agents/skills', 'workflow', 'licenses', 'AGENTS.md', 'dependencies.lock.json',
   'LICENSE', 'THIRD-PARTY-NOTICES.md',
 ];
-const instructions = [
-  marker,
-  '## Design Loop',
-  '',
-  'For Design Loop tasks, read `.design-loop/AGENTS.md` and `.design-loop/workflow/FLOW.md`.',
-  'Use `.design-loop/` as `LAB_ROOT` and keep experiments at `experiments/<slug>/` in this project.',
-  '<!-- /design-loop -->',
+const omittedPaths = [
+  skillPath,
+  '.agents/skills/taste-skill/assets',
+  '.agents/skills/taste-skill/scripts',
+  '.agents/skills/ui-ux-pro-max/scripts/tests',
+  '.agents/skills/unslop/agents',
+  '.agents/skills/unslop/scripts',
 ];
+
+function includePayloadPath(path) {
+  const relativePath = relative(source, path).split(sep).join('/');
+  return !relativePath.split('/').includes('__pycache__')
+    && !/\.py[cod]$/.test(relativePath)
+    && !omittedPaths.some((omitted) => relativePath === omitted || relativePath.startsWith(`${omitted}/`));
+}
 
 function snapshot(directory, prefix = '') {
   const entries = [];
@@ -52,7 +59,7 @@ function snapshot(directory, prefix = '') {
 function unchangedInstallation() {
   const path = join(destination, manifest);
   if (!lstatSync(path, { throwIfNoEntry: false })?.isFile()) {
-    throw new Error('The .design-loop directory has no installer manifest. Move it aside before installing.');
+    throw new Error(`${skillPath} has no installer manifest. Move it aside before installing.`);
   }
   const saved = JSON.parse(readFileSync(path, 'utf8'));
   if (saved.format !== 1 || !Array.isArray(saved.entries)) {
@@ -63,22 +70,14 @@ function unchangedInstallation() {
   const changed = [...new Set([...expected.keys(), ...actual.keys()])]
     .filter((name) => expected.get(name) !== actual.get(name));
   if (changed.length) {
-    throw new Error(`Local changes in .design-loop: ${changed.slice(0, 5).join(', ')}. Save them outside the managed directory and restore the installed files before updating.`);
+    throw new Error(`Local changes in ${skillPath}: ${changed.slice(0, 5).join(', ')}. Save them outside the managed directory and restore the installed files before updating.`);
   }
 }
 
-function linkInstructions() {
-  const path = join(project, 'AGENTS.md');
+function ensureDirectory(path) {
   const stat = lstatSync(path, { throwIfNoEntry: false });
-  if (stat && !stat.isFile()) throw new Error('AGENTS.md must be a regular file.');
-  const bytes = stat ? readFileSync(path) : Buffer.alloc(0);
-  if (bytes.includes(0) || !isUtf8(bytes)) throw new Error('AGENTS.md must use UTF-8.');
-  const content = bytes.toString('utf8');
-  const lines = content.split(/\r?\n/);
-  if (lines.includes(marker)) return;
-  const newline = content.includes('\r\n') ? '\r\n' : '\n';
-  const separator = content ? (content.endsWith('\n') ? newline : newline.repeat(2)) : '';
-  appendFileSync(path, `${separator}${instructions.join(newline)}${newline}`);
+  if (stat && !stat.isDirectory()) throw new Error(`Expected a regular directory at ${path}`);
+  if (!stat) mkdirSync(path);
 }
 
 function install(command) {
@@ -87,9 +86,19 @@ function install(command) {
   const previous = join(lock, 'previous');
   let keepBackup = false;
   try {
+    if (command === 'init') {
+      ensureDirectory(join(project, '.agents'));
+      ensureDirectory(join(project, '.agents', 'skills'));
+    } else {
+      for (const parent of ['.agents', '.agents/skills']) {
+        if (!lstatSync(join(project, parent), { throwIfNoEntry: false })?.isDirectory()) {
+          throw new Error('No managed installation found. Run init first.');
+        }
+      }
+    }
     const installed = lstatSync(destination, { throwIfNoEntry: false });
     if (command === 'init' && installed) {
-      throw new Error('.design-loop already exists. Use update for a managed installation.');
+      throw new Error(`${skillPath} already exists. Use update for a managed installation.`);
     }
     if (command === 'update' && !installed?.isDirectory()) {
       throw new Error('No managed installation found. Run init first.');
@@ -99,14 +108,14 @@ function install(command) {
     for (const item of payload) {
       cpSync(join(source, item), join(next, item), {
         recursive: true,
-        filter: (path) => basename(path) !== '__pycache__' && !/\.py[cod]$/.test(path),
+        filter: includePayloadPath,
       });
     }
+    cpSync(join(source, skillPath, 'SKILL.md'), join(next, 'SKILL.md'));
     writeFileSync(join(next, manifest), `${JSON.stringify({ format: 1, entries: snapshot(next) }, null, 2)}\n`);
-    if (installed) {
-      unchangedInstallation();
-      renameSync(destination, previous);
-    }
+    if (installed) unchangedInstallation();
+    ensureDirectory(join(project, 'design'));
+    if (installed) renameSync(destination, previous);
     try {
       renameSync(next, destination);
     } catch (error) {
@@ -116,14 +125,6 @@ function install(command) {
         keepBackup = false;
       }
       throw error;
-    }
-    if (command === 'init') {
-      try {
-        linkInstructions();
-      } catch (error) {
-        renameSync(destination, next);
-        throw error;
-      }
     }
   } finally {
     if (keepBackup) {
@@ -142,7 +143,7 @@ try {
   } else {
     if (!['init', 'update'].includes(command) || args.length) throw new Error(usage);
     install(command);
-    console.log(`Design Loop ${command === 'init' ? 'installed' : 'updated'} in .design-loop/`);
+    console.log(`Design Loop ${command === 'init' ? 'installed' : 'updated'} in ${skillPath}/`);
   }
 } catch (error) {
   console.error(`design-loop: ${error.message}`);

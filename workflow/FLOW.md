@@ -1,7 +1,7 @@
 # Shared design workflow — visual character and professional execution
 
 ## 0. Establish the starting state
-Resolve LAB_ROOT and EXPERIMENT_ROOT through root AGENTS. Read the active experiment's STATE. Artifact paths below resolve inside EXPERIMENT_ROOT; skill paths resolve inside LAB_ROOT. The active local FLOW governs screen types, sizes and subject matter.
+Resolve LAB_ROOT and EXPERIMENT_ROOT through the Design Loop AGENTS. Read the active experiment's STATE. Artifact paths below resolve inside EXPERIMENT_ROOT; skill paths resolve inside LAB_ROOT. The active local FLOW governs screen types, sizes and subject matter.
 
 Read STATE. For an explicitly requested fresh cycle, verify RESET first; never reset an ongoing design automatically. Keep only the product idea across resets. Report leftover artifacts and unavailable checks honestly; do not bypass rejected deletions. This is FigCraft design work with one primary author and authorized read-only review subagents, without application development or product browser runtime. Read-only live-reference research is allowed under REFERENCE-RESEARCH.md.
 

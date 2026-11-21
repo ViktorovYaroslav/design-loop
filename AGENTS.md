@@ -1,7 +1,7 @@
 # Design Loop — shared instructions
 
 ## Resolve scope first
-LAB_ROOT contains .agents/skills, workflow and licenses. Use the repository root in a standalone checkout or .design-loop/ in a consuming project. EXPERIMENT_ROOT is the design workspace explicitly named by the user or start prompt, conventionally experiments/<slug> at the standalone or consuming project root. Create a new workspace only when the user requests a new design; otherwise read its AGENTS.md and docs/STATE.md before editing. If the target is ambiguous, ask which workspace; do not default to the previous one.
+LAB_ROOT contains .agents/skills, workflow and licenses. Use the repository root in a standalone checkout or .agents/skills/design-loop/ in a consuming project. EXPERIMENT_ROOT is the design workspace explicitly named by the user or start prompt. The default is experiments/<slug>/ in a standalone checkout and design/<slug>/ at the consuming project root. In a consuming project, save the native .figcraft file directly in that workspace. Keep direction decisions in its design/ subdirectory. Create a new workspace only when the user requests a new design; otherwise read its AGENTS.md and docs/STATE.md before editing. If the target is ambiguous, ask which workspace; do not default to the previous one.
 
 Each experiment owns its docs/, design/, data/ if present, assets/ and evidence/. Relative artifact paths in shared workflow resolve inside EXPERIMENT_ROOT. Shared skill paths resolve inside LAB_ROOT. Do not write experiment artifacts at the lab root or reuse another experiment's assets/decisions. Work on one experiment at a time.
 

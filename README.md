@@ -24,7 +24,9 @@ npx --yes --prefer-online --package=github:ViktorovYaroslav/design-loop#main -- 
 bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update
 ```
 
-The installer writes the workflow, skills and licenses to `.design-loop/` and appends a pointer to your existing `AGENTS.md` or creates it. `update` replaces the managed copy after checking for local edits and extra files. Keep project-specific instructions in your root `AGENTS.md` and design workspaces under `experiments/`. Connect FigCraft MCP separately before drawing.
+The installer adds `.agents/skills/design-loop/` and creates `design/` at the project root. Invoke `$design-loop` in Codex to start or resume a design. The root `AGENTS.md` belongs to the project. The skill includes the shared workflow, companion references, the UI UX Pro Max recommendation script and the notices for bundled material. Web demos, browser scripts and Python caches are excluded from the installed skill. Connect FigCraft MCP separately before drawing.
+
+`update` replaces the managed skill after checking for local edits and extra files. Design workspaces live under `design/<slug>/` with the `.figcraft` file at the workspace root. The project owns those files.
 
 To use an unpublished local checkout, run `node /path/to/design-loop/bin/design-loop.mjs init` or `update` from the target project root.
 
@@ -59,7 +61,7 @@ layout, polish, realistic-validation and independent-review procedures.
 Design only. Preserve other workspaces and report unavailable checks honestly.
 ```
 
-The six included skills live in `.agents/skills/` under the standalone or installed workflow root. Inspect the local `SKILL.md` paths if a client does not expose them in its selector.
+The six companion skills live in `.agents/skills/` under the standalone or installed workflow root. Inspect the local `SKILL.md` paths if a client does not expose them in its selector.
 
 ## Workflow
 
@@ -94,7 +96,7 @@ experiments/<slug>/      Created by the agent; ignored by this repository
 
 To resume, name the existing workspace and ask the agent to read its `docs/STATE.md`. Do not start a new cycle or reset a file merely because the context changed.
 
-In an existing project, use `.design-loop/` as `LAB_ROOT` and keep `experiments/` at the project root. Point Codex at the installed instructions and name the experiment in the start prompt.
+In an existing project, the installed skill directory is `LAB_ROOT` and workspaces live under the project root's `design/` directory. Invoke `$design-loop` and name the workspace in the start prompt.
 
 ## Skills and tools
 

@@ -1,124 +1,105 @@
 # Design Loop
 
-An agent-driven, design-only workflow for Codex and FigCraft MCP: from a product idea to an editable, reviewed design system and screens.
+An agent-led workflow for taking a product idea to editable, reviewed screens and a design system in FigCraft. Works with Codex and Claude Code.
 
-The user brings an idea and chooses a visual character. The designer develops three paired directions, refines the selected one through focused passes, builds the system and expands the screens. Independent read-only reviews check visual craft, task clarity, data and file structure. The designer remains the only author.
+[Quick start](#quick-start) · [Workflow](#how-the-loop-works) · [Included skills](#included-skills) · [Project layout](#project-layout)
 
-This repository contains the reusable method, six skill packages and license notices. It does not contain the original laboratory's designs, datasets, screenshots, review history or user approvals.
+## Quick start
 
-## Get started
+**1. Install from the target project root.** Use Node.js 20+ with npm, or Bun.
 
-### Install in an existing project
-
-Run one of these commands from the target project root. The CLI requires Node.js 20+ through npm, or Bun through `bunx --bun`. Both examples use the GitHub `main` branch. You can replace `main` with a tag or commit to pin the workflow.
-
-```bash
+```sh
 npx --yes --package=github:ViktorovYaroslav/design-loop#main -- design-loop init
+```
+
+```sh
 bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop init
 ```
 
-Use the same launcher with `update` to refresh the managed copy.
+| Client | Installer flag | Skill location | Invoke |
+| --- | --- | --- | --- |
+| Codex | `--agent codex` (default) | `.agents/skills/design-loop/` | `$design-loop` |
+| Claude Code | `--agent claude` | `.claude/skills/design-loop/` | `/design-loop` |
 
-```bash
-npx --yes --prefer-online --package=github:ViktorovYaroslav/design-loop#main -- design-loop update
-bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update
+Append the flag to `init`. To use both clients, run `init` once for each. Both use the same `design/` directory.
+
+**2. Connect FigCraft MCP** in the client you use for design work. The UI UX Pro Max recommendation script uses Python 3.
+
+**3. Invoke the skill and give it a brief.** Name the workspace when resuming an existing design.
+
+```text
+$design-loop Create a new design at design/my-product. My idea: <product, audience, main task>.
 ```
 
-The installer adds `.agents/skills/design-loop/` and creates `design/` at the project root. Invoke `$design-loop` in Codex to start or resume a design. The root `AGENTS.md` belongs to the project. The skill includes the shared workflow, companion references, the UI UX Pro Max recommendation script and the notices for bundled material. Web demos, browser scripts and Python caches are excluded from the installed skill. Connect FigCraft MCP separately before drawing.
+<details>
+<summary>Update or run from a local checkout</summary>
 
-### Choose an agent
+Use `update` with the same agent flag you installed with. The installer checks the managed skill for local edits before replacing it. Your designs stay in `design/`. Replace `main` with a tag or commit to pin a revision.
 
-`--agent codex` is the default. It installs a project skill for Codex and clients that discover `.agents/skills/`. Use `--agent claude` with both `init` and `update` to use `.claude/skills/design-loop/`, then invoke `/design-loop` in Claude Code.
-
-```bash
-npx --yes --package=github:ViktorovYaroslav/design-loop#main -- design-loop init --agent claude
+```sh
+npx --yes --prefer-online --package=github:ViktorovYaroslav/design-loop#main -- design-loop update
 bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update --agent claude
 ```
 
-To use both agents in one project, run `init` once for each. They share the project’s `design/` directory. Each command updates the skill for its selected agent. Connect FigCraft MCP in the client you use for design work.
+To install from a local checkout, run `node /path/to/design-loop/bin/design-loop.mjs init` from the target project's root. You can also work directly in the Design Loop checkout. Invoke the skill there and use `experiments/<slug>/` as your design workspace.
 
-`update` replaces the managed skill after checking for local edits and extra files. Design workspaces live under `design/<slug>/` with the `.figcraft` file at the workspace root. The project owns those files.
+</details>
 
-To use an unpublished local checkout, run `node /path/to/design-loop/bin/design-loop.mjs init` or `update` from the target project root.
+## How the loop works
 
-### Use a standalone checkout
-
-1. Clone this repository and open its folder in Codex:
-
-   ```bash
-   git clone https://github.com/ViktorovYaroslav/design-loop.git
-   cd design-loop
-   ```
-
-2. Connect FigCraft MCP in your Codex environment. Connection details depend on your local FigCraft setup; no machine-specific server path, credentials or MCP configuration is bundled. Ask the agent to verify the connection before drawing. Python 3 is needed for the bundled UI UX Pro Max recommendation script.
-3. Start a new conversation with the prompt below, replacing the workspace name and idea.
-
-```text
-Read AGENTS.md and workflow/FLOW.md.
-Create a new isolated workspace at experiments/my-product.
-My idea: <describe the product, audience and main purpose>.
-
-Prepare the local brief, flow and state from the shared method. Keep the
-documents compact and infer routine decisions; ask about material unknowns.
-Verify FigCraft MCP, create and save a separate native design file, and keep
-all generated assets, data and evidence inside this workspace.
-
-Start with the style-character selector and wait for my answer. Use Taste
-to develop three distinct directions within that character, each on two
-complementary screens. Build through the progressive passes, inspect the
-results and wait at the two user checkpoints. Apply the shared iconography,
-layout, polish, realistic-validation and independent-review procedures.
-
-Design only. Preserve other workspaces and report unavailable checks honestly.
+```mermaid
+flowchart TD
+    A["Idea, audience and main task"] --> B["Choose a visual character and study references"]
+    B --> C["Build three directions on two screens each"]
+    C --> D{"1. Choose a direction"}
+    D -->|More options| C
+    D -->|Selected| E["Refine the pair, adapt it and test difficult states"]
+    E --> F["Unslop and independent review"]
+    F --> G{"2. Approve refined samples"}
+    G -->|Revise| E
+    G -->|Approved| H["Build the design system and remaining screens"]
+    H --> I["Final review and editable FigCraft handoff"]
+    classDef checkpoint fill:#fef3c7,stroke:#a16207,color:#422006;
+    class D,G checkpoint;
 ```
 
-The six companion skills live in `.agents/skills/` under the standalone or installed workflow root. Inspect the local `SKILL.md` paths if a client does not expose them in its selector.
+Choose **Restrained**, **Expressive / Fancy**, or **Balanced** before visual research. The designer then builds each screen in focused passes.
 
-## Workflow
+**Composition → visual language → content and graphics → components and craft → adaptations and states → motion intent → editorial review**
 
-1. Define product tasks, choose character (Restrained, Expressive / Fancy, or Balanced) and establish observable targets and viewports.
-2. Study actual references for style, execution quality and task patterns.
-3. Develop three paired visual directions, then wait for the user's selection.
-4. Refine the selected pair, adaptations, difficult states and useful interaction intent. Review and fix material issues, then wait for sample approval.
-5. Consolidate the design system and expand the required screen families.
-6. Freeze features, polish, independently review and map original requirements to current evidence.
+Before the first checkpoint, the designer compares the full viewport and a task-critical fragment at 100% with relevant references. Component libraries such as MUI X and shadcn/ui inform complex controls and states. [Full workflow](workflow/FLOW.md) · [Progressive construction](workflow/PROGRESSIVE-BUILD.md) · [Reference research](workflow/REFERENCE-RESEARCH.md)
 
-Construction proceeds through composition, visual language, content/graphics, components/craft, adaptation, motion intent and editorial comparison. These are internal passes, not additional user questionnaires. Technical correctness and character fit are assessed separately.
+## Included skills
 
-See [the full flow](workflow/FLOW.md), [progressive construction](workflow/PROGRESSIVE-BUILD.md), [visual polish](workflow/VISUAL-POLISH.md) and [independent review](workflow/INDEPENDENT-REVIEW.md).
+`design-loop` is the entry point. It opens these six bundled skills as needed.
 
-## Repository and generated work
+| Skill | Role in the workflow |
+| --- | --- |
+| [Taste](.agents/skills/taste-skill/SKILL.md) | Leads visual research, composition and art direction. |
+| [Frontend Design](.agents/skills/frontend-design/SKILL.md) | Critiques whether the design feels specific to the product. |
+| [UI UX Pro Max](.agents/skills/ui-ux-pro-max/SKILL.md) | Supports UX and design-system decisions after sample approval. |
+| [Emil Design Engineering](.agents/skills/emil-design-eng/SKILL.md) | Refines controls, interaction states and motion intent. |
+| [Unslop](.agents/skills/unslop/SKILL.md) | Audits visual hierarchy, repetition, copy and finish. |
+| [FigCraft File Craft](.agents/skills/figcraft-file-craft/SKILL.md) | Guides editable layer structure, auto layout and component reuse. |
+
+The package includes the workflow, selected references and required license notices. [Skill roles and source revisions](workflow/SKILLS.md) · [Dependency lock](dependencies.lock.json)
+
+## Project layout
 
 ```text
-.agents/skills/          Five pinned upstream packages + FigCraft File Craft
-workflow/                Shared procedure and quality criteria
-licenses/                Retained third-party licenses
-dependencies.lock.json   Upstream repositories, source paths and revisions
-AGENTS.md                Shared scope and execution rules
-
-experiments/<slug>/      Created by the agent; ignored by this repository
-  AGENTS.md
-  docs/                  Brief, local flow, state, target and review records
-  design/                Native .figcraft file and direction decisions
-  data/                  Synthetic fixtures when needed
-  assets/                This workspace's references and icon assets
-  evidence/              Current exports and verification evidence
+my-project/
+├── .agents/skills/design-loop/    # or .claude/skills/design-loop/
+│   ├── SKILL.md                  # entry point
+│   ├── workflow/                 # method, checkpoints and reviews
+│   └── .agents/skills/           # bundled companion skills
+└── design/<slug>/
+    ├── <name>.figcraft           # editable design
+    ├── docs/                     # brief, state and review records
+    └── evidence/                 # current exports and verification
 ```
 
-To resume, name the existing workspace and ask the agent to read its `docs/STATE.md`. Do not start a new cycle or reset a file merely because the context changed.
+Design Loop delivers editable FigCraft files, exports and review evidence. Implementation is a separate step. [Final acceptance](workflow/FINAL-ACCEPTANCE.md)
 
-In an existing project, the installed skill directory is `LAB_ROOT` and workspaces live under the project root's `design/` directory. Invoke the skill and name the workspace in the start prompt.
+## License
 
-## Skills and tools
-
-Taste leads visual direction; frontend-design critiques specificity; UI UX Pro Max supports UX/system choices; Emil supports details and motion intent; Unslop audits concrete defects; FigCraft File Craft governs semantic structure and reusable layout. See [sources, roles and adaptation rules](workflow/SKILLS.md) and [the dependency lock](dependencies.lock.json). Upstream packages retain their supporting assets/scripts; bundled web/demo tooling does not authorize application development or make its browser gates part of this design-only flow.
-
-FigCraft MCP is required to create native designs. Inspo MCP is optional for reference research. An existing browser connector can inspect public references read-only when live behavior matters; Playwright is not a default dependency. This repository installs/configures none of these tools and does not bundle frontend icon packages.
-
-Controls use real library icon assets, Lucide by default, and persistent layout rules. Charts remain faithful to their data. Static screens, designed motion states, prototype playback, runtime checks and human usability observations are distinct evidence types.
-
-## Updating and licensing
-
-Upstream skills are vendored snapshots with sources and revisions in `dependencies.lock.json`. Maintainers update those pins deliberately. The `update` command installs the snapshots bundled with the requested Design Loop revision. Generated workspaces stay outside the managed installation.
-
-Original material is available under [MIT](LICENSE), subject to the explicit third-party exclusions there. Vendored packages and attributed adaptations retain their own terms; see [third-party notices](THIRD-PARTY-NOTICES.md). Unslop is by Damir Sokolovsky under CC BY 4.0. Reference photographs, icons, fonts and demo assets may carry additional notices inside their upstream packages; inclusion is not a blanket license to reuse them in a product.
+Original Design Loop material is available under the [MIT license](LICENSE). Bundled skills and attributed adaptations retain their own terms. [Third-party notices](THIRD-PARTY-NOTICES.md)

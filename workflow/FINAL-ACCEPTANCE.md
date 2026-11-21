@@ -1,0 +1,17 @@
+# Final editorial pass and honest acceptance
+
+Before presenting finished work, freeze feature scope. Do not add screens, effects or decorative novelty to compensate for unresolved execution problems. Refine hierarchy, copy, spacing, states, typography and unnecessary elements. Preserve approved identity, meaningful data labels and required states.
+
+Review baseline plus representative stress cases under REALISTIC-VALIDATION, perform TASK-WALKTHROUGH and complete the designer-managed INDEPENDENT-REVIEW. Apply VISUAL-POLISH, CHARACTER-AUDIT and file-craft. After fixes, inspect affected screenshots at whole-screen and 100% scale, component instances and relevant task paths. Review a viewport/fold separately from tall content exports.
+
+Create docs/ACCEPTANCE.md mapping each brief requirement, screen/state, named artifact and quality check to current frame/file evidence and a status: verified, incomplete, not applicable with reason, or unverified with limitation. Separate evidence of metric arithmetic, chart geometry, visual inspection, prototype structure, playback and human observation. Counts/checklists alone do not establish quality. Preserve the original scope; do not redefine it around whatever was produced.
+
+For new work include TARGET's observable goals and remaining gaps from ROUNDS. Confirm used standard icon assets have source/version/license/package mapping and visual import checks, or disclose limitations. Review the chosen color balance as a hierarchy decision, not an unmeasured numerical certification. Older accepted designs do not require retroactive target/asset records.
+
+Check the requested character and recognizable visual language independently of geometric/data correctness. Review proportionate card/detail space, useful disclosure, reader-facing explanations and graphic finish through VISUAL-POLISH/CHARACTER-AUDIT. For representative repeated controls verify persistent layout/sizing or an explicit exception, plus source/instance and long-label evidence. A known material character/craft gap is not closed by a clean structural audit. Use the existing finding/disposition rules; do not impose a numerical beauty threshold or a new approval gate.
+
+Close completion only when required design deliverables exist, accepted material defects are fixed and rechecked, core static tasks are covered, and required review evidence is present. Do not retain a material flaw the author recognizes merely because all boxes are checked. Record minor deferrals and explicit user-accepted scope limits visibly. An unavailable required check remains unverified; disclose it rather than making a passing claim.
+
+A design-only handoff can be complete without implementation. It must not claim verified runtime scrolling, keyboard/focus trapping, screen readers, fluid layout, live data, persistence or arbitrary input/filter behavior unless actually exercised. Record those as implementation-stage checks and distinguish them from missing work within this design scope. Human observation is optional and honestly labeled; expert/model walkthroughs do not substitute for it.
+
+The handoff includes the editable design, current exports, actual design/interaction rules, validation and review/disposition records, requirement evidence, limitations and a concise user-facing report. Do not automatically reopen previously accepted experiments when these process rules are updated.

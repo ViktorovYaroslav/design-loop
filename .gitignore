@@ -1,0 +1,15 @@
+# Generated design workspaces belong to the consuming project.
+/experiments/
+/designs/
+
+# Runtime output and local configuration
+__pycache__/
+*.py[cod]
+node_modules/
+.env
+.env.*
+!.env.example
+.codex/
+.DS_Store
+Thumbs.db
+*.log

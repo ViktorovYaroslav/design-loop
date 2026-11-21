@@ -1,0 +1,10 @@
+# Normalize project-authored text; preserve vendored upstream file bytes.
+/AGENTS.md text eol=lf
+/README.md text eol=lf
+/LICENSE text eol=lf
+/THIRD-PARTY-NOTICES.md text eol=lf
+/dependencies.lock.json text eol=lf
+/.gitignore text eol=lf
+/.gitattributes text eol=lf
+/workflow/** text eol=lf
+/.agents/skills/figcraft-file-craft/** text eol=lf

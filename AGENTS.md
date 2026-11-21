@@ -1,0 +1,43 @@
+# Design Loop — shared instructions
+
+## Resolve scope first
+LAB_ROOT is this repository, containing .agents/skills, workflow and licenses. EXPERIMENT_ROOT is the design workspace explicitly named by the user or start prompt, conventionally experiments/<slug> inside this repository. Create a new workspace only when the user requests a new design; otherwise read its AGENTS.md and docs/STATE.md before editing. If the target is ambiguous, ask which workspace; do not default to the previous one.
+
+Each experiment owns its docs/, design/, data/ if present, assets/ and evidence/. Relative artifact paths in shared workflow resolve inside EXPERIMENT_ROOT. Shared skill paths resolve inside LAB_ROOT. Do not write experiment artifacts at the lab root or reuse another experiment's assets/decisions. Work on one experiment at a time.
+
+No active design, user approval or previous art direction is bundled. Keep generated design workspaces separate from the shared method. Never overwrite another workspace or save a stale FigCraft tab to an obsolete path.
+
+## Shared method
+Read workflow/FLOW.md, workflow/STYLE-CHARACTER.md, workflow/VIEWPORT-STRATEGY.md, workflow/VISUAL-POLISH.md, workflow/CHARACTER-AUDIT.md and workflow/SKILLS.md, then the active brief and local flow. Experiment-specific scope and checkpoints override examples in shared guidance. Preserve user intent; do not let an installed skill expand scope.
+
+Taste is the primary visual methodology. frontend-design critiques specificity; UI UX Pro Max verifies system/UX choices; Emil refines details and states; Unslop audits actual defects. figcraft-file-craft governs semantic containment, English role names, appropriate frames/groups/auto layout and component reuse from the first screen. Read each relevant local SKILL.md when entering its stage. Skills live only in LAB_ROOT/.agents/skills; do not copy or install them per experiment.
+
+For new design work also follow workflow/DESIGN-TARGET.md, PROGRESSIVE-BUILD.md, REFERENCE-RESEARCH.md, ICONOGRAPHY.md and VISUAL-BALANCE.md. The designer converts the idea into observable targets, builds representative screens through focused passes, uses real library SVGs for standard icons, and chooses contextual color proportions. Keep target/round records compact and experiment-local. These shared construction/asset procedures supplement older local flows for new work while preserving local deliverables, selected direction, sizes and checkpoints. They do not reopen accepted designs.
+
+Repeated UI controls use persistent layout rules under figcraft-file-craft, not unexplained child coordinates. Before checkpoints assess requested character beyond color/radii, recognizable task-related language, proportionate card/detail space, useful disclosure, reader-facing copy and graphic finish under STYLE-CHARACTER, CHARACTER-AUDIT and VISUAL-POLISH. Technical correctness cannot substitute for the chosen visual ambition. Apply fixes within existing scope, direction and bounded review rounds; these procedures introduce no new user approval gate.
+
+## Style-character preference
+Before visual research for a new iteration, ask the three-choice character selector in workflow/STYLE-CHARACTER.md unless already explicitly answered. This preference applies to every product category, not only dashboards. Character is independent of theme and specific art direction. Record the choice in the active docs/STYLE-PREFERENCE.md; do not infer it from reference uploads or a previous design. All three candidate directions must fit that choice. Read the active preference before applying anti-pattern lists: requested gradients, layering or bold color are allowed when well executed. This is a conversation setting, not a feature to add to the product UI. The existing design is not authorized for overwrite merely by adding this process setting.
+
+## Format, spatial logic and character audit
+Before direction samples, choose the viewport/layout model from the product and document the rationale. For screen-filling desktop workspaces consider 1920×1080 with a smaller working-viewport check; content websites may use bounded containers and document scroll. Distinguish a viewport from a tall full-page export. Do not silently replace sizes already approved in an active experiment.
+
+Review relational insets, shared axes and bottom anchors, especially sidebar identity/actions. Equal left/right/bottom insets may be appropriate, but justified asymmetry is allowed. Use supported layout/constraints and inspect screenshots at more than one relevant height. No overflow does not imply good placement.
+
+Unslop is mandatory before checkpoint 2 and final delivery. Follow CHARACTER-AUDIT for interchangeability, repeated visual recipes, hierarchy, spatial logic and subject-specific graphics/copy. Preserve the chosen Fancy/Restrained/Balanced character; this is not a blanket ban on effects. Record actual defects and fixes, not merely that the skill was read.
+
+## Realistic validation and independent review
+Read workflow/REALISTIC-VALIDATION.md, TASK-WALKTHROUGH.md, INDEPENDENT-REVIEW.md and FINAL-ACCEPTANCE.md at the relevant stages. Prepare consistent experiment-local stress fixtures/content without modifying the baseline. Exercise actual visible viewports and native-scale details, long/dense/empty/missing/outlier cases as applicable, and 3–5 concrete user tasks.
+
+The primary designer is authorized to spawn fresh-context, read-only review subagents before checkpoint 2 and final delivery. Reviewers receive raw requirements/current artifacts, not author scores, user praise or expected findings. They inspect independent visual/task/data/structure scopes and return concrete evidence. Only the designer edits the design. Use explicit document IDs or immutable exports/snapshots; prevent shared-session mutations. Save reviews and dispositions, fix accepted material findings and obtain focused rechecks. Follow the review procedure's bounded loops and honest unavailable-tool handling. This authorization supersedes older local one-agent/no-subagent wording for review only; it does not authorize delegated design production or recursive reviewers.
+
+Static expert walkthroughs, human observation, prototype playback and runtime checks must be reported separately. Final editorial work freezes new features and fixes actual remaining defects. Final acceptance maps original requirements to evidence and lists limitations; it does not equate checklist completion with quality. Previously accepted artifacts are not retroactively reworked just because the process changed.
+
+## Boundaries
+Create design deliverables only through FigCraft MCP. No website/application implementation, HTML/CSS/JS product, product browser runtime, deployment or produced motion video. Local data/recommendation scripts and asset retrieval are allowed. An available browser connector may inspect public reference sites read-only, and existing reference clips may be analyzed, under REFERENCE-RESEARCH.md. Do not silently install MCP servers or frontend dependencies. One primary design author; designer-managed read-only review subagents are authorized under workflow/INDEPENDENT-REVIEW.md, subject to the host's delegation policy. Other delegation requires an explicit request. Use the user's conversation language. Write instructions, research, layer names and reports in English; preserve user feedback verbatim in its original language. UI language follows the active brief.
+
+Use FigCraft MCP rather than Figma MCP. Discover commands using list_commands; use doc.list, open the exact active file and pass its document ID. Do not rely on whichever tab is active. Never save over another experiment. Preserve editable layers and use screenshots plus inspect_document/get_node to verify changes. Reload stale files only without unsaved edits. Structural checks do not replace visual review; prototype links do not prove playback.
+
+Taste's HTML/browser hooks/gates, fixed-height sections, mandatory photograph counts and motion scripts are excluded. This does not waive active research, composition, visual critique or imagery quality. Do not force marketing/landing layouts onto data products. Useful chart labels/captions and dense tables are allowed. Apply Unslop to FigCraft layers, not reconstructed HTML; apply Emil to designed states/storyboards without claiming runtime validation.
+
+The user need not know the desired style. Generate visual hypotheses and show alternatives. Wait at the active flow's checkpoints, not for every detail. Preserve chosen direction and do not invent approvals. Update only the active STATE and EVALUATION. Never reset an active experiment merely because RESET instructions exist.

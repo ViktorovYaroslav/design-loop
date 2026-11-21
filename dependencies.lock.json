@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "policy": "Vendored snapshots. Update intentionally and preserve upstream notices. No automatic installer or updater is implemented.",
+  "skills": [
+    {
+      "directory": ".agents/skills/taste-skill",
+      "repository": "https://github.com/Leonxlnx/taste-skill",
+      "source_path": "skills/taste-skill",
+      "commit": "f6b76575f949707b4e3c37cd86cb44b0b98643e8",
+      "license_file": "licenses/taste-LICENSE"
+    },
+    {
+      "directory": ".agents/skills/frontend-design",
+      "repository": "https://github.com/anthropics/skills",
+      "source_path": "skills/frontend-design",
+      "commit": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
+      "license_file": ".agents/skills/frontend-design/LICENSE.txt"
+    },
+    {
+      "directory": ".agents/skills/ui-ux-pro-max",
+      "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "source_path": ".claude/skills/ui-ux-pro-max",
+      "commit": "6ae86f61f520d6ca229d2f40e070410638c908c5",
+      "license_file": "licenses/ui-ux-pro-max-LICENSE"
+    },
+    {
+      "directory": ".agents/skills/emil-design-eng",
+      "repository": "https://github.com/emilkowalski/skills",
+      "source_path": "skills/emil-design-eng",
+      "commit": "0f2e23b32bb1265e84cff8d3e75785fec953fb1b",
+      "license_file": "licenses/emilkowalski-LICENSE"
+    },
+    {
+      "directory": ".agents/skills/unslop",
+      "repository": "https://github.com/heydamir/unslop",
+      "source_path": "skills/unslop",
+      "commit": "97daa3eb365670ea3f87ed85356cbfcee18105a5",
+      "license_file": "licenses/unslop-LICENSE"
+    }
+  ],
+  "local_skills": [
+    {
+      "directory": ".agents/skills/figcraft-file-craft",
+      "source": "Original Design Loop structural skill; research sources are credited in SKILL.md."
+    }
+  ]
+}

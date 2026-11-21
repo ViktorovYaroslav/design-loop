@@ -1,0 +1,30 @@
+{
+  "name": "design-loop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Install and update the Design Loop workflow in a project",
+  "bin": {
+    "design-loop": "bin/design-loop.mjs"
+  },
+  "files": [
+    "bin/design-loop.mjs",
+    ".agents/skills",
+    "workflow",
+    "licenses",
+    "AGENTS.md",
+    "dependencies.lock.json",
+    "THIRD-PARTY-NOTICES.md",
+    "!**/__pycache__/**",
+    "!**/*.py[cod]"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViktorovYaroslav/design-loop.git"
+  }
+}

@@ -8,6 +8,28 @@ This repository contains the reusable method, six skill packages and license not
 
 ## Get started
 
+### Install in an existing project
+
+Run one of these commands from the target project root. The CLI requires Node.js 20+ through npm, or Bun through `bunx --bun`. Both examples use the GitHub `main` branch. You can replace `main` with a tag or commit to pin the workflow.
+
+```bash
+npx --yes --package=github:ViktorovYaroslav/design-loop#main -- design-loop init
+bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop init
+```
+
+Use the same launcher with `update` to refresh the managed copy.
+
+```bash
+npx --yes --prefer-online --package=github:ViktorovYaroslav/design-loop#main -- design-loop update
+bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update
+```
+
+The installer writes the workflow, skills and licenses to `.design-loop/` and appends a pointer to your existing `AGENTS.md` or creates it. `update` replaces the managed copy after checking for local edits and extra files. Keep project-specific instructions in your root `AGENTS.md` and design workspaces under `experiments/`. Connect FigCraft MCP separately before drawing.
+
+To use an unpublished local checkout, run `node /path/to/design-loop/bin/design-loop.mjs init` or `update` from the target project root.
+
+### Use a standalone checkout
+
 1. Clone this repository and open its folder in Codex:
 
    ```bash
@@ -37,7 +59,7 @@ layout, polish, realistic-validation and independent-review procedures.
 Design only. Preserve other workspaces and report unavailable checks honestly.
 ```
 
-No `npx` installer, `init`/`update` command, npm publication or `$design-loop` entry skill is implemented in this initial repository. Start through the root instructions and prompt above. The six included skills live in `.agents/skills/`; there is no separate global skill-install step for this checkout. Inspect the local `SKILL.md` paths if a client does not expose them in its selector.
+The six included skills live in `.agents/skills/` under the standalone or installed workflow root. Inspect the local `SKILL.md` paths if a client does not expose them in its selector.
 
 ## Workflow
 
@@ -72,7 +94,7 @@ experiments/<slug>/      Created by the agent; ignored by this repository
 
 To resume, name the existing workspace and ask the agent to read its `docs/STATE.md`. Do not start a new cycle or reset a file merely because the context changed.
 
-For an existing application repository, copy `.agents/skills/`, `workflow/`, `licenses/` and `dependencies.lock.json` into an agreed non-conflicting location and adapt `LAB_ROOT`/artifact paths accordingly. Merge only relevant instruction guidance into the project's existing rules; do not replace its `AGENTS.md`. An automated in-project installer is future work. This initial checkout is the supported ready-to-use layout.
+In an existing project, use `.design-loop/` as `LAB_ROOT` and keep `experiments/` at the project root. Point Codex at the installed instructions and name the experiment in the start prompt.
 
 ## Skills and tools
 
@@ -84,6 +106,6 @@ Controls use real library icon assets, Lucide by default, and persistent layout 
 
 ## Updating and licensing
 
-Dependencies are vendored snapshots with sources/revisions in `dependencies.lock.json`. Update intentionally, preserve notices and review differences; there is no automatic updater. Generated workspaces are isolated from method updates and are not retroactively redesigned.
+Upstream skills are vendored snapshots with sources and revisions in `dependencies.lock.json`. Maintainers update those pins deliberately. The `update` command installs the snapshots bundled with the requested Design Loop revision. Generated workspaces stay outside the managed installation.
 
 Original material is available under [MIT](LICENSE), subject to the explicit third-party exclusions there. Vendored packages and attributed adaptations retain their own terms; see [third-party notices](THIRD-PARTY-NOTICES.md). Unslop is by Damir Sokolovsky under CC BY 4.0. Reference photographs, icons, fonts and demo assets may carry additional notices inside their upstream packages; inclusion is not a blanket license to reuse them in a product.

@@ -76,7 +76,7 @@ Before presenting, confirm the technical polish did not erase the requested char
 After sample approval, read the skill and run using the script path resolved from LAB_ROOT:
 
 ```text
-python .agents/skills/ui-ux-pro-max/scripts/search.py "<active product type and analytical or interaction task>" --design-system
+python -B .agents/skills/ui-ux-pro-max/scripts/search.py "<active product type and analytical or interaction task>" --design-system
 ```
 
 Check relevance; narrow the query if necessary and search ux/typography/color individually for specific concerns. Do not use --persist. Recommendations verify accessibility, adaptation and coherence; they do not override DIRECTION's palette or fonts. Record accepted and rejected advice in RESEARCH.

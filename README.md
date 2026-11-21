@@ -26,6 +26,17 @@ bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update
 
 The installer adds `.agents/skills/design-loop/` and creates `design/` at the project root. Invoke `$design-loop` in Codex to start or resume a design. The root `AGENTS.md` belongs to the project. The skill includes the shared workflow, companion references, the UI UX Pro Max recommendation script and the notices for bundled material. Web demos, browser scripts and Python caches are excluded from the installed skill. Connect FigCraft MCP separately before drawing.
 
+### Choose an agent
+
+`--agent codex` is the default. It installs a project skill for Codex and clients that discover `.agents/skills/`. Use `--agent claude` with both `init` and `update` to use `.claude/skills/design-loop/`, then invoke `/design-loop` in Claude Code.
+
+```bash
+npx --yes --package=github:ViktorovYaroslav/design-loop#main -- design-loop init --agent claude
+bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update --agent claude
+```
+
+To use both agents in one project, run `init` once for each. They share the project’s `design/` directory. Each command updates the skill for its selected agent. Connect FigCraft MCP in the client you use for design work.
+
 `update` replaces the managed skill after checking for local edits and extra files. Design workspaces live under `design/<slug>/` with the `.figcraft` file at the workspace root. The project owns those files.
 
 To use an unpublished local checkout, run `node /path/to/design-loop/bin/design-loop.mjs init` or `update` from the target project root.
@@ -96,7 +107,7 @@ experiments/<slug>/      Created by the agent; ignored by this repository
 
 To resume, name the existing workspace and ask the agent to read its `docs/STATE.md`. Do not start a new cycle or reset a file merely because the context changed.
 
-In an existing project, the installed skill directory is `LAB_ROOT` and workspaces live under the project root's `design/` directory. Invoke `$design-loop` and name the workspace in the start prompt.
+In an existing project, the installed skill directory is `LAB_ROOT` and workspaces live under the project root's `design/` directory. Invoke the skill and name the workspace in the start prompt.
 
 ## Skills and tools
 

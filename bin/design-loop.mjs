@@ -8,11 +8,12 @@ import {
 } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseArgs } from 'node:util';
 
 const source = fileURLToPath(new URL('../', import.meta.url));
 const project = realpathSync(process.cwd());
-const skillPath = '.agents/skills/design-loop';
-const destination = join(project, skillPath);
+const bundledSkill = '.agents/skills/design-loop';
+const agentDirectories = new Map([['codex', '.agents'], ['claude', '.claude']]);
 const lock = join(project, '.design-loop-install');
 const manifest = '.install-manifest.json';
 const payload = [
@@ -20,7 +21,7 @@ const payload = [
   'LICENSE', 'THIRD-PARTY-NOTICES.md',
 ];
 const omittedPaths = [
-  skillPath,
+  bundledSkill,
   '.agents/skills/taste-skill/assets',
   '.agents/skills/taste-skill/scripts',
   '.agents/skills/ui-ux-pro-max/scripts/tests',
@@ -56,7 +57,7 @@ function snapshot(directory, prefix = '') {
   return entries;
 }
 
-function unchangedInstallation() {
+function unchangedInstallation(destination, skillPath) {
   const path = join(destination, manifest);
   if (!lstatSync(path, { throwIfNoEntry: false })?.isFile()) {
     throw new Error(`${skillPath} has no installer manifest. Move it aside before installing.`);
@@ -80,20 +81,21 @@ function ensureDirectory(path) {
   if (!stat) mkdirSync(path);
 }
 
-function install(command) {
+function install(command, agentDirectory) {
+  const skillsDirectory = `${agentDirectory}/skills`;
+  const skillPath = `${skillsDirectory}/design-loop`;
+  const destination = join(project, skillPath);
   mkdirSync(lock);
   const next = join(lock, 'next');
   const previous = join(lock, 'previous');
   let keepBackup = false;
   try {
-    if (command === 'init') {
-      ensureDirectory(join(project, '.agents'));
-      ensureDirectory(join(project, '.agents', 'skills'));
-    } else {
-      for (const parent of ['.agents', '.agents/skills']) {
-        if (!lstatSync(join(project, parent), { throwIfNoEntry: false })?.isDirectory()) {
-          throw new Error('No managed installation found. Run init first.');
-        }
+    for (const parent of [agentDirectory, skillsDirectory]) {
+      const path = join(project, parent);
+      if (command === 'init') {
+        ensureDirectory(path);
+      } else if (!lstatSync(path, { throwIfNoEntry: false })?.isDirectory()) {
+        throw new Error(`No managed installation at ${skillPath}. Run init for this agent first.`);
       }
     }
     const installed = lstatSync(destination, { throwIfNoEntry: false });
@@ -101,7 +103,7 @@ function install(command) {
       throw new Error(`${skillPath} already exists. Use update for a managed installation.`);
     }
     if (command === 'update' && !installed?.isDirectory()) {
-      throw new Error('No managed installation found. Run init first.');
+      throw new Error(`No managed installation at ${skillPath}. Run init for this agent first.`);
     }
 
     mkdirSync(next);
@@ -111,9 +113,9 @@ function install(command) {
         filter: includePayloadPath,
       });
     }
-    cpSync(join(source, skillPath, 'SKILL.md'), join(next, 'SKILL.md'));
+    cpSync(join(source, bundledSkill, 'SKILL.md'), join(next, 'SKILL.md'));
     writeFileSync(join(next, manifest), `${JSON.stringify({ format: 1, entries: snapshot(next) }, null, 2)}\n`);
-    if (installed) unchangedInstallation();
+    if (installed) unchangedInstallation(destination, skillPath);
     ensureDirectory(join(project, 'design'));
     if (installed) renameSync(destination, previous);
     try {
@@ -133,16 +135,20 @@ function install(command) {
       rmSync(lock, { recursive: true });
     }
   }
+  return skillPath;
 }
 
 const [command, ...args] = process.argv.slice(2);
-const usage = 'Usage: design-loop <init|update> (run from the target project root)';
+const usage = 'Usage: design-loop <init|update> [--agent codex|claude] (default: codex; run from the project root)';
 try {
   if (!command || command === '--help' || command === '-h') {
     console.log(usage);
   } else {
-    if (!['init', 'update'].includes(command) || args.length) throw new Error(usage);
-    install(command);
+    if (!['init', 'update'].includes(command)) throw new Error(usage);
+    const { values } = parseArgs({ args, options: { agent: { type: 'string', default: 'codex' } } });
+    const agentDirectory = agentDirectories.get(values.agent);
+    if (!agentDirectory) throw new Error('Supported agents are codex and claude.');
+    const skillPath = install(command, agentDirectory);
     console.log(`Design Loop ${command === 'init' ? 'installed' : 'updated'} in ${skillPath}/`);
   }
 } catch (error) {

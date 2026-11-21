@@ -1,6 +1,6 @@
 ---
 name: design-loop
-description: Create, refine, or resume editable FigCraft designs using the Design Loop workflow, from visual direction choices through sample approval, validation, and handoff. Use when the user invokes $design-loop or explicitly asks to use this workflow for a design project.
+description: Create, refine, or resume editable FigCraft designs using the Design Loop workflow, from visual direction choices through sample approval, validation, and handoff. Use when the user invokes $design-loop or /design-loop, or explicitly asks to use this workflow for a design project.
 ---
 
 # Design Loop

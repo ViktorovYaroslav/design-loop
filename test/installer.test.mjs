@@ -85,3 +85,31 @@ test('update can remove retired bundle files and add files from a new revision',
   assert.match(extra.stderr, /workflow\/project-notes\.md/);
   assert.equal(readFileSync(join(managed, 'project-notes.md'), 'utf8'), 'Keep this');
 });
+
+test('agent selection installs and updates only the chosen project skill', (t) => {
+  const cwd = mkdtempSync(join(tmpdir(), 'design-loop-agents-'));
+  t.after(() => rmSync(cwd, { force: true, recursive: true }));
+  const run = (...args) => spawnSync(process.execPath, [cli, ...args], { cwd, encoding: 'utf8' });
+  const codex = join(cwd, '.agents', 'skills', 'design-loop');
+  const claude = join(cwd, '.claude', 'skills', 'design-loop');
+
+  const invalid = run('init', '--agent', 'other');
+  assert.notEqual(invalid.status, 0);
+  assert.match(invalid.stderr, /codex.*claude/);
+  assert.deepEqual(readdirSync(cwd), []);
+
+  const initClaude = run('init', '--agent=claude');
+  assert.equal(initClaude.status, 0, initClaude.stderr);
+  assert.equal(existsSync(codex), false);
+  assert.match(readFileSync(join(claude, 'SKILL.md'), 'utf8'), /name: design-loop/);
+  assert.equal(existsSync(join(cwd, 'CLAUDE.md')), false);
+  assert.notEqual(run('update').status, 0);
+
+  const initCodex = run('init', '--agent', 'codex');
+  assert.equal(initCodex.status, 0, initCodex.stderr);
+  const codexFlow = join(codex, 'workflow', 'FLOW.md');
+  writeFileSync(codexFlow, 'Codex local changes');
+  const updateClaude = run('update', '--agent', 'claude');
+  assert.equal(updateClaude.status, 0, updateClaude.stderr);
+  assert.equal(readFileSync(codexFlow, 'utf8'), 'Codex local changes');
+});

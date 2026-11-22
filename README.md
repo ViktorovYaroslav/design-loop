@@ -6,15 +6,33 @@ An agent-led workflow for taking a product idea to editable, reviewed screens an
 
 ## Quick start
 
-**1. Install from the target project root.** Use Node.js 20+ with npm, or Bun.
+**1. Install from the target project root.** Use Git and either Node.js 20+ with npm or Bun. Resolve `main` to a commit before invoking the installer so the launcher can cache each revision separately.
 
 ```sh
-npx --yes --package=github:ViktorovYaroslav/design-loop#main -- design-loop init
+revision=$(git ls-remote https://github.com/ViktorovYaroslav/design-loop.git refs/heads/main | cut -f1)
+test -n "$revision" && npx --yes --package="github:ViktorovYaroslav/design-loop#$revision" -- design-loop init
 ```
 
+For Bun, use the same `revision`:
+
 ```sh
-bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop init
+test -n "$revision" && bunx --bun --package "github:ViktorovYaroslav/design-loop#$revision" design-loop init
 ```
+
+<details>
+<summary>PowerShell commands</summary>
+
+```powershell
+$ref = git ls-remote https://github.com/ViktorovYaroslav/design-loop.git refs/heads/main
+if ($LASTEXITCODE -ne 0 -or -not $ref) { throw 'Could not resolve Design Loop main.' }
+$revision = ($ref -split '\s+')[0]
+$package = "github:ViktorovYaroslav/design-loop#$revision"
+npx --yes "--package=$package" -- design-loop init
+# Or use Bun
+# bunx --bun --package $package design-loop init
+```
+
+</details>
 
 | Client | Installer flag | Skill location | Invoke |
 | --- | --- | --- | --- |
@@ -34,12 +52,7 @@ $design-loop Create a new design at design/my-product. My idea: <product, audien
 <details>
 <summary>Update or run from a local checkout</summary>
 
-Use `update` with the same agent flag you installed with. The installer checks the managed skill for local edits before replacing it. Your designs stay in `design/`. Replace `main` with a tag or commit to pin a revision.
-
-```sh
-npx --yes --prefer-online --package=github:ViktorovYaroslav/design-loop#main -- design-loop update
-bunx --bun --package github:ViktorovYaroslav/design-loop#main design-loop update --agent claude
-```
+Resolve `main` again with the commands above and replace `init` with `update`. Use the same agent flag you installed with. The `#main` package spec can reuse an older launcher cache, so pass the resolved commit. To install a fixed revision, set `revision` to its full commit SHA. The installer checks the managed skill for local edits before replacing it. Your designs stay in `design/`.
 
 To install from a local checkout, run `node /path/to/design-loop/bin/design-loop.mjs init` from the target project's root. You can also work directly in the Design Loop checkout. Invoke the skill there and use `experiments/<slug>/` as your design workspace.
 

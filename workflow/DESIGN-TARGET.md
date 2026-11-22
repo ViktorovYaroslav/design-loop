@@ -6,6 +6,7 @@ The user supplies an idea, not an art-direction specification. The designer auth
 
 - Delivery scope: concept samples, a named slice, or the full product. A request for a product design with no narrower limit calls for full coverage of the agreed product. A named stopping point or explicit screen list bounds the current delivery.
 - Audience, situation and main job; 3–5 tasks linked to TASK-WALKTHROUGH.
+- Product proof: what the audience should understand first, the concrete action or outcome that supports it, and the most useful evidence to show (product UI, states, content, data or another task-specific visual). Note what is real, conceptual or unavailable; do not invent capabilities, claims or metrics. Explain what would need to change before the visual could represent another product.
 - Required screen/state/viewport pairs, their first-visible content and the decision/action each enables. Keep these IDs stable for before/after comparison.
 - Visual ambition: selected character, intended first focus, supporting hierarchy, distinctive device and what must remain quiet. Translate adjectives into visible choices.
 - Reference roles: style inspiration, execution-quality benchmark, or task/data example. Name the dimension learned from each; a quality benchmark does not authorize copying its layout or branding.
@@ -33,3 +34,5 @@ The author sees feedback; fresh independent reviewers receive the resulting fact
 ## Round record
 
 Keep docs/ROUNDS.md concise: revision/evidence → user feedback or observed gap → primary focus → change → actual check/result → remaining issue or regression. Record tool checks separately from visual judgment. Preserve the best known evidence revision before substantial changes; restore/revise a regression through supported save/version operations, never by overwriting another experiment. Use existing FLOW review limits; there is no mandatory hours/token quota or endless refinement loop.
+
+Use this record as the canonical account of visual iterations; other required review and acceptance documents may reference its evidence instead of repeating the narrative. Preserve separate independent-review findings and dispositions, task/structural verification, original requirements and limitations where their procedures require them. Do not create extra logs merely to document each pass.

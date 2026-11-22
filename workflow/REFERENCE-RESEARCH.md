@@ -20,6 +20,8 @@ For static treatment, screenshots suffice. For motion, observe actual playback o
 
 Assign stable reference IDs and screen/state/viewport IDs. Compare reference and design at comparable viewing scale and label contextual differences; do not stretch one to fake a match. Compare the dimensions relevant to this target, not pixel similarity to a different product. Give each chosen reference a short “learn / do not copy” note. Keep reference prestige separate from observed execution quality.
 
+Include task-relevant examples and execution benchmarks from other categories when useful. For images actually viewed, identify the first focal point, scale and credibility of product evidence, relationship of copy to visual, and rhythm between adjacent sections where applicable. Record a concrete transferable principle and a boundary against copying. Compare screenshots side by side at comparable scale when possible; note viewport and unavailable views. Do not infer interaction or motion from stills.
+
 ## Component and interaction references
 
 When a core task depends on a complex or unfamiliar control, consult relevant official component demos while designing the sample. [MUI X Data Grid](https://mui.com/x/react-data-grid/) is a reference for dense tables, selection, filters and empty states. [shadcn/ui](https://ui.shadcn.com/docs/components/combobox) is a reference for patterns such as searchable selection, multiple values and no matches. Start with the product's existing system when the brief specifies one. Choose examples based on the task and the states the screen needs.

@@ -25,6 +25,8 @@ Read Taste SKILL.md and copy.md, copy-voice.md, system.md, layout-v4.md and sect
 
 Propose three hypotheses within the selected character; do not use the slots as one restrained, one expressive and one balanced option. For each define the intended impression, first point of attention, distinctive visual device, and balance between emotional appeal and practical task completion. “Modern, clean, usable” is not a direction. Subject matter does not prescribe a palette.
 
+Ground hypotheses in TARGET's product proof: the first understanding, concrete evidence and task-specific visual. Establish what is real, conceptual or unavailable before choosing how to show it.
+
 ## 2. Analyze references through Taste
 Use the selected character to choose references, and distinguish UI treatment from presentation/mockup effects. Examine images from 3–5 strong references, using Taste materials and external sources where useful. Include references selected for execution quality, not just the product category. Do not copy a brand wholesale.
 
@@ -36,7 +38,7 @@ In RESEARCH record each source URL/path, the image actually viewed, how scale/hi
 
 ## 3. Develop three directions on two screens each
 
-Use PROGRESSIVE-BUILD.md: establish composition with realistic content, then develop visual language, finish graphics/content, and refine sample components/craft. Compare screenshots after focused passes; do not execute a whole screen as one unchecked batch. All candidate pairs must be visually convincing before checkpoint 1. The passes are internal work, not new user gates.
+Use PROGRESSIVE-BUILD.md: explore rough primary-screen compositions and select three distinct candidates before developing their companion screens and visual language. Establish composition with realistic content, then finish graphics/content and refine sample components/craft. Compare screenshots after focused passes; do not execute a whole screen as one unchecked batch. All candidate pairs must be visually convincing before checkpoint 1. The passes are internal work, not new user gates.
 
 Choose the primary icon family through ICONOGRAPHY.md and a contextual color-area budget through VISUAL-BALANCE.md. Default standard UI icons to actual Lucide SVGs unless a justified alternative fits better. Record asset provenance and exact package mapping; do not hand-draw substitutes for standard icons. Proportions guide visual hierarchy, not formula compliance.
 Read the local figcraft-file-craft skill before building. Plan the page map and create the Directions page for candidate pairs. Create named semantic containers immediately: a control's label/icon belongs inside its frame; related artwork belongs inside a meaningful group. Use suitable auto layout and stable node IDs. Early exploration does not require a full library, but it does require an understandable tree. Inspect existing controls before drawing copies.
@@ -57,6 +59,8 @@ Create design/DIRECTION.md: selected style character and its concrete interpreta
 Refine both desktop screens and the adaptation sizes defined in the active brief. Draft components/tokens are allowed earlier; defer the full library until the samples are strong. Preserve important information on mobile and avoid mechanically stacking equally weighted desktop cards.
 
 Continue the progressive adaptation/stress-state and motion passes. Maintain docs/ROUNDS.md under DESIGN-TARGET.md: user feedback or concrete observed gap, primary focus, change and repeated check on the same screen/state/viewport. Treat user scores as expectation feedback, not objective completion percentages. Preserve usable before/after evidence and revisit a regression before propagating it.
+
+Apply PROGRESSIVE-BUILD's product-evidence and page-narrative review. Compare the selected pair directly with viewed execution benchmarks and address material composition or central-visual gaps before minor polish. Use the existing bounded rounds and checkpoint; disclose unresolved gaps.
 
 Use the redraw path in PROGRESSIVE-BUILD when the first samples or selected direction still feel generic. Rework the affected composition or task-defining visual on a copy and compare it with the baseline before polishing controls or propagating the pattern. Use the existing correction rounds, including when the user asks to revisit a delivered version. Preserve the approved baseline and confirm the scope before changing the selected direction itself.
 
@@ -89,6 +93,8 @@ Use figcraft-file-craft to consolidate the library without rebuilding compatible
 Build every agreed screen family, size and representative state in the TARGET inventory. Cover the primary journey and all applicable entry, secondary and recovery routes. Keep named scope limits in force. Carry DIRECTION across every page. Return to Taste and the approved samples if identity weakens.
 
 Build expanded screens from named sections and existing component instances. Apply file-craft while creating them, not as a deferred cleanup task. Show the active product's primary journey, necessary empty/error states and long content. Add prototype links when supported; distinguish structural verification from playback. Verify that components and documentation match screens. Run the seven-part polish pass on new screens before treating them as finished.
+
+Review the expanded journey or page as a sequence, including the first viewport and transitions. Preserve the product evidence and visual idea across secondary screens while giving each section or state a distinct purpose.
 
 Apply the progressive construction passes to new screen families using the approved language. Do not repeat art-direction intake or add duplicate research merely to fill a stage. Finish and inspect a representative screen before propagating its pattern.
 

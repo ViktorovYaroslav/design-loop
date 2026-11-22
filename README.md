@@ -2,7 +2,7 @@
 
 An agent-led workflow for taking a product idea to editable, reviewed screens and a design system in FigCraft. Works with Codex and Claude Code.
 
-[Quick start](#quick-start) · [Workflow](#how-the-loop-works) · [Included skills](#included-skills) · [Project layout](#project-layout)
+[Quick start](#quick-start) · [Workflow](#how-the-loop-works) · [FigCraft](#figcraft-integration) · [Included skills](#included-skills) · [Project layout](#project-layout)
 
 ## Quick start
 
@@ -68,6 +68,14 @@ Choose **Restrained**, **Expressive / Fancy**, or **Balanced** before visual res
 **Composition → visual language → content and graphics → components and craft → adaptations and states → motion intent → editorial review**
 
 Before the first checkpoint, the designer compares the full viewport and a task-critical fragment at 100% with relevant references. Component libraries such as MUI X and shadcn/ui inform complex controls and states. [Full workflow](workflow/FLOW.md) · [Progressive construction](workflow/PROGRESSIVE-BUILD.md) · [Reference research](workflow/REFERENCE-RESEARCH.md)
+
+## FigCraft integration
+
+<img src="https://raw.githubusercontent.com/storytold/figcraft/5c2a378494df9e8c6dec9da117e9b63d49633fda/assets/app-icon/figcraft-128.png" width="64" align="right" alt="FigCraft app icon" />
+
+FigCraft is the interface design and prototyping editor used throughout Design Loop. The agent works in the project's document through FigCraft MCP. It builds editable frames, auto layouts and reusable components, then checks screenshots and inspects the layer tree. The handoff includes the native `.figcraft` file and review exports.
+
+[FigCraft](https://getartcraft.com/apps/figcraft) · [MCP documentation](https://github.com/storytold/figcraft/blob/main/docs/mcp.md) · [App icon credit](https://github.com/storytold/figcraft/blob/5c2a378494df9e8c6dec9da117e9b63d49633fda/assets/app-icon/LICENSE.txt)
 
 ## Included skills
 

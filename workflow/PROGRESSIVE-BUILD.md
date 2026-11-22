@@ -26,6 +26,12 @@ This comparison belongs to the existing composition and craft passes. During ref
 
 Each correction round has one primary focus and 1–3 concrete gaps in docs/ROUNDS.md. Avoid changing layout, palette, typography and effects simultaneously during a polish round; a dependent fix is allowed and recorded. Capture before/after for meaningful decisions, not every node mutation. Check a representative screen before propagating source-component changes. If a change regresses the task or composition, revise or revert it rather than layering more effects over it.
 
+## Redraw when the concept feels generic
+
+At the existing visual reviews, identify the main decision and the visual element that makes it easier. Explain how that element expresses this product's subject or working method, and point to a related choice on the companion screen. A convincing motif can be a precise chart, a distinctive composition, a view of the subject or a well-designed interaction state. Judge how much it improves the task and whether the requested character is visible at first glance.
+
+If the screen feels interchangeable or its most prominent area repeats information, treat that as a composition or visual-language finding. Preserve the current pair, then redraw the affected frame or dominant area on a working copy. For an unclear solution, test two small compositional alternatives with identical content. Compare before and after at the same viewport and at 100% for the changed area. Keep the stronger version and carry the change to the companion screen only after checking that it improves the journey. Use the existing correction rounds and checkpoints.
+
 The designer chooses routine pass details and proceeds autonomously between existing checkpoints. No automatic browser implementation, animation code, extra screens or new design-file reset follows from this method.
 
 ## Carry quality through the passes

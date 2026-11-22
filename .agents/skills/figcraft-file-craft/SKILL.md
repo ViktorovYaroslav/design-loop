@@ -7,6 +7,22 @@ description: Build and maintain editable FigCraft layer structures with semantic
 
 Keep the layer tree understandable and safe to edit. Preserve the selected visual direction, product copy and existing authorization. Use FigCraft MCP; do not assume the Figma Plugin API works in FigCraft.
 
+## Organize the document by page role
+
+Plan the page map before drawing. Use these roles in a new file, adapted to the scope and existing project conventions:
+
+| Page | Contains |
+|---|---|
+| `Brief` | Product goal, scope, and links or pointers to the primary frames when the project needs a cover. |
+| `Directions` | Candidate pairs and any comparison variants. Group by candidate. |
+| `Foundations` | Color, type, spacing, layout rules, and relevant styles or variables. |
+| `Components` | Canonical UI kit sources, organized by family with representative variants. |
+| `Screens` | Current deliverable screens, grouped by journey with viewport sizes together. |
+| `States` | Alternate states, overlays, and stress cases, grouped by the screen they support. |
+| `Archive` | Superseded work worth retaining. Add when needed. |
+
+Create pages as their contents become relevant. Give each visible deliverable one canonical home. Use stable frame names such as `Plan the shot / Desktop / 1440`; keep the compact frame with its screen family. Preserve saved prototypes and source/component links when organizing existing work. Record the page map and primary frame IDs in the existing design handoff so a reader can find the current prototype, component sources and supporting states directly. Verify the page map and a representative screen subtree through FigCraft before checkpoint 2 and final delivery.
+
 ## Build structure as you draw
 
 - Give each meaningful entity one parent: button, field, tab, card, stop row, navigation or action group. Keep its label/icon/content inside that parent, not scattered beside it under the screen.

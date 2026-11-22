@@ -49,15 +49,15 @@ To install from a local checkout, run `node /path/to/design-loop/bin/design-loop
 
 ```mermaid
 flowchart TD
-    A["Idea, audience and main task"] --> B["Choose a visual character and study references"]
+    A["Brief, audience and screen inventory"] --> B["Choose a visual character and study references"]
     B --> C["Build three directions on two screens each"]
     C --> D{"1. Choose a direction"}
     D -->|More options| C
     D -->|Selected| E["Refine the pair, adapt it and test difficult states"]
     E --> F["Unslop and independent review"]
     F --> G{"2. Approve refined samples"}
-    G -->|Revise| E
-    G -->|Approved| H["Build the design system and remaining screens"]
+    G -->|Refine or redraw| E
+    G -->|Approved| H["Build the UI kit and all agreed screens"]
     H --> I["Final review and editable FigCraft handoff"]
     classDef checkpoint fill:#fef3c7,stroke:#a16207,color:#422006;
     class D,G checkpoint;
@@ -68,6 +68,8 @@ Choose **Restrained**, **Expressive / Fancy**, or **Balanced** before visual res
 **Composition → visual language → content and graphics → components and craft → adaptations and states → motion intent → editorial review**
 
 Before the first checkpoint, the designer compares the full viewport and a task-critical fragment at 100% with relevant references. Component libraries such as MUI X and shadcn/ui inform complex controls and states. [Full workflow](workflow/FLOW.md) · [Progressive construction](workflow/PROGRESSIVE-BUILD.md) · [Reference research](workflow/REFERENCE-RESEARCH.md)
+
+For a full product, the handoff includes an editable UI kit, a page map and coverage of the agreed screen inventory. The designer announces independent reviews and summarizes their findings and fixes. [Independent review](workflow/INDEPENDENT-REVIEW.md) · [Final acceptance](workflow/FINAL-ACCEPTANCE.md)
 
 ## FigCraft integration
 

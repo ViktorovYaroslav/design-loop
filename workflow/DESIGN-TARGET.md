@@ -4,6 +4,7 @@ The user supplies an idea, not an art-direction specification. The designer auth
 
 ## Target contents
 
+- Delivery scope: concept samples, a named slice, or the full product. A request for a product design with no narrower limit calls for full coverage of the agreed product. A named stopping point or explicit screen list bounds the current delivery.
 - Audience, situation and main job; 3–5 tasks linked to TASK-WALKTHROUGH.
 - Required screen/state/viewport pairs, their first-visible content and the decision/action each enables. Keep these IDs stable for before/after comparison.
 - Visual ambition: selected character, intended first focus, supporting hierarchy, distinctive device and what must remain quiet. Translate adjectives into visible choices.
@@ -14,6 +15,12 @@ The user supplies an idea, not an art-direction specification. The designer auth
 Example from a logistics idea: “A dispatcher can identify the highest-risk hub in the overview and reach the affected shipment detail. Risk must be more salient than healthy connections. A dense table remains legible at the smaller working viewport. The same accent/shape language carries across overview and detail.” These are design targets, not claims of measured user success.
 
 Write one compact document, not another long PRD. Its initial version is a hypothesis. Direction choice and checkpoint-2 feedback refine it; they do not silently remove original requirements. Present a brief target summary with the normal direction presentation; no extra mandatory approval gate.
+
+## Plan screen coverage
+
+For a full product, map the journeys from entry to outcome before drawing directions. Include core, entry, secondary and recovery routes where the product needs them. Use a compact screen inventory in TARGET with stable IDs, route or task, required states and sizes, and the stage that will deliver them. Consider onboarding, sign-in, registration, recovery, settings and account screens only where the product or brief needs them. Account-free products can record that choice and move on. Give each route a destination and a way back or out where relevant.
+
+Mark which two screens represent the direction at checkpoint 1 and which families are due after checkpoint 2. Update the inventory when scope changes explicitly. Carry the full inventory into acceptance, including any agreed exclusions or deferred requirements.
 
 ## Calibrate expectations with evidence
 

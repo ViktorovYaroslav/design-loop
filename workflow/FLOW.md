@@ -20,7 +20,7 @@ Read REALISTIC-VALIDATION.md and TASK-WALKTHROUGH.md. Define 3–5 task goals/st
 
 ## 1. Form visual hypotheses with Taste
 
-First follow DESIGN-TARGET.md to draft the compact docs/TARGET.md from the idea, selected character, tasks and viewport. Define observable goals and stable screen/state IDs. The user need not supply a detailed visual specification; assumptions and routine art-direction decisions belong to the designer. Refine the target through existing checkpoints, without adding a new mandatory approval step.
+First follow DESIGN-TARGET.md to draft the compact docs/TARGET.md from the idea, selected character, tasks and viewport. Record the delivery scope and screen inventory before drawing the representative pair. An explicit checkpoint stop stays in force until the user authorizes continuation. Define observable goals and stable screen/state IDs. The user need not supply a detailed visual specification; assumptions and routine art-direction decisions belong to the designer. Refine the target through existing checkpoints, without adding a new mandatory approval step.
 Read Taste SKILL.md and copy.md, copy-voice.md, system.md, layout-v4.md and sections.md. Open photos.md, moments.md and relevant sections-library recipes as needed. Taste leads visual work throughout the cycle, not only at startup. Adapt website-specific instructions according to AGENTS.
 
 Propose three hypotheses within the selected character; do not use the slots as one restrained, one expressive and one balanced option. For each define the intended impression, first point of attention, distinctive visual device, and balance between emotional appeal and practical task completion. “Modern, clean, usable” is not a direction. Subject matter does not prescribe a palette.
@@ -39,7 +39,7 @@ In RESEARCH record each source URL/path, the image actually viewed, how scale/hi
 Use PROGRESSIVE-BUILD.md: establish composition with realistic content, then develop visual language, finish graphics/content, and refine sample components/craft. Compare screenshots after focused passes; do not execute a whole screen as one unchecked batch. All candidate pairs must be visually convincing before checkpoint 1. The passes are internal work, not new user gates.
 
 Choose the primary icon family through ICONOGRAPHY.md and a contextual color-area budget through VISUAL-BALANCE.md. Default standard UI icons to actual Lucide SVGs unless a justified alternative fits better. Record asset provenance and exact package mapping; do not hand-draw substitutes for standard icons. Proportions guide visual hierarchy, not formula compliance.
-Read the local figcraft-file-craft skill before building. Create named semantic containers immediately: a control's label/icon belongs inside its frame; related artwork belongs inside a meaningful group. Use suitable auto layout and stable node IDs. Early exploration does not require a full library, but it does require an understandable tree. Inspect existing controls before drawing copies.
+Read the local figcraft-file-craft skill before building. Plan the page map and create the Directions page for candidate pairs. Create named semantic containers immediately: a control's label/icon belongs inside its frame; related artwork belongs inside a meaningful group. Use suitable auto layout and stable node IDs. Early exploration does not require a full library, but it does require an understandable tree. Inspect existing controls before drawing copies.
 
 Use the same product content in all directions. Each direction includes two desktop screens representing complementary tasks from the active brief: six representative screens, not a complete product or isolated decorative heroes.
 
@@ -58,6 +58,8 @@ Refine both desktop screens and the adaptation sizes defined in the active brief
 
 Continue the progressive adaptation/stress-state and motion passes. Maintain docs/ROUNDS.md under DESIGN-TARGET.md: user feedback or concrete observed gap, primary focus, change and repeated check on the same screen/state/viewport. Treat user scores as expectation feedback, not objective completion percentages. Preserve usable before/after evidence and revisit a regression before propagating it.
 
+Use the redraw path in PROGRESSIVE-BUILD when the first samples or selected direction still feel generic. Rework the affected composition or task-defining visual on a copy and compare it with the baseline before polishing controls or propagating the pattern. Use the existing correction rounds, including when the user asks to revisit a delivered version. Preserve the approved baseline and confirm the scope before changing the selected direction itself.
+
 Apply figcraft-file-craft to the selected samples: organize meaningful entities, replace ambiguous names, reuse recurring controls where appropriate, and check for unnecessary wrappers. Capture before/after screenshots for structural refactoring; verify component links, overrides, bindings and prototype targets. Do not change the selected visual direction or delete hidden layers without checking their purpose.
 
 Apply the seven-part pass in VISUAL-POLISH.md: geometry/optical alignment, purposeful icons, interaction clarity, density/rhythm, typography, consistent finish across media, and identity in details. Taste leads visual changes; Emil supports detail and states; Unslop identifies specific defects without replacing the selected character.
@@ -66,7 +68,7 @@ Run the installed Unslop review with CHARACTER-AUDIT.md, not only a search for d
 
 For 1–2 useful interactions, show states and record trigger, timing/easing and reduced-motion behavior in MOTION. A storyboard does not prove playback. Save current-cycle before/after evidence for substantial fixes. Record defect → change → repeated visual check. Allow up to three correction rounds, then disclose unresolved issues instead of silently accepting them.
 
-Before checkpoint 2, exercise representative stress cases and task paths. Run a fresh-context read-only review subagent per INDEPENDENT-REVIEW.md; normally one reviewer, or two with distinct visual/task-data scopes. The designer alone applies fixes and records reviewer findings/dispositions in docs/REVIEWS.md. Recheck accepted material corrections against updated screenshots/structure. If required review is unavailable or material issues remain after bounded rounds, report the limitation and keep the affected gate incomplete unless explicitly accepted by the user.
+Before checkpoint 2, exercise representative stress cases and task paths. Run fresh-context, read-only subagent review per INDEPENDENT-REVIEW.md, covering visual craft and character as well as task/data/file structure. Announce the confirmed launch and its scope. The designer alone applies fixes and records reviewer findings and dispositions in docs/REVIEWS.md. Recheck accepted material corrections against updated screenshots and structure. If required review is unavailable or material issues remain after bounded rounds, report the limitation and keep the affected gate incomplete unless explicitly accepted by the user.
 
 **Checkpoint 2:** show the two refined desktop/mobile pairs and material changes. Assess character and execution separately, ask for the user's reaction and wait. If rejected, revisit composition/presentation instead of adding ornaments. Do not expand a weak sample into a full system.
 
@@ -81,10 +83,10 @@ python -B .agents/skills/ui-ux-pro-max/scripts/search.py "<active product type a
 
 Check relevance; narrow the query if necessary and search ux/typography/color individually for specific concerns. Do not use --persist. Recommendations verify accessibility, adaptation and coherence; they do not override DIRECTION's palette or fonts. Record accepted and rejected advice in RESEARCH.
 
-Use figcraft-file-craft to consolidate the library without rebuilding compatible components. Define useful properties and only needed variants. Build Foundations: semantic tokens, type scale, grid, spacing, surfaces and adaptation rules. Use actual components/instances, properties, auto layout and bindings where supported. Document actual decisions in DESIGN. Component count is not a measure of beauty. Apply relevant polish checks to source components and representative instances.
+Use figcraft-file-craft to consolidate the library without rebuilding compatible components. Build Foundations with semantic tokens, type, grid, spacing, surfaces and adaptation rules. For a full product, build a dedicated Components page for a reusable UI kit. Derive families from the full screen inventory, including the secondary routes and required states. Include applicable buttons, inputs, selection and navigation controls, dialogs or sheets, feedback and recurring domain components. Define variants for actual uses such as default, selected, focus, disabled, error or loading. Build editable sources and use linked instances, useful properties, auto layout and bindings where supported. Record the source and a representative used instance for each applicable family in DESIGN. Validate the sources and representative instances at native scale.
 
 ## 6. Expand the product
-Create the screen families, sizes and representative states defined in the active BRIEF and local FLOW. Carry DIRECTION across every page. Return to Taste and the approved samples if identity weakens.
+Build every agreed screen family, size and representative state in the TARGET inventory. Cover the primary journey and all applicable entry, secondary and recovery routes. Keep named scope limits in force. Carry DIRECTION across every page. Return to Taste and the approved samples if identity weakens.
 
 Build expanded screens from named sections and existing component instances. Apply file-craft while creating them, not as a deferred cleanup task. Show the active product's primary journey, necessary empty/error states and long content. Add prototype links when supported; distinguish structural verification from playback. Verify that components and documentation match screens. Run the seven-part polish pass on new screens before treating them as finished.
 
@@ -99,7 +101,7 @@ Run a structural review with figcraft-file-craft before the final image review. 
 
 Review screens as a family. Repeat CHARACTER-AUDIT with Unslop and check sidebar/footer inset relationships and anchor behavior at the selected viewport heights. Assess character fit and visual authorship independently from geometric validity. Taste checks character and visual coherence, Emil checks detail, Unslop checks defects. Apply VISUAL-POLISH's seven checks, fix findings and re-render affected screens and component instances. Record before/after and unresolved limitations. Save .figcraft and review exports. Complete EVALUATION with separate scores for character, professional execution, usability and system completeness; do not imply user approval from self-scores.
 
-After expansion, run the independent subagent review again on the final revision. Save review coverage, dispositions and focused rechecks. Close accepted blocker/major findings; explain any justified minor deferral visibly. If a required review could not run, mark it unverified rather than silently substituting self-review. Produce docs/ACCEPTANCE.md mapping original deliverables and quality requirements to current evidence. Separate design completion from unperformed human/runtime validation.
+After expansion, run the independent subagent review again on the final revision. Announce the confirmed launch and summarize coverage, findings and rechecks in the handoff. Close accepted blocker/major findings and explain any justified minor deferral visibly. If required review could not run, mark its coverage unverified. Produce docs/ACCEPTANCE.md mapping the agreed screen inventory, UI kit, file structure and original quality requirements to current evidence. Separate design completion from unperformed human/runtime validation.
 
 ## Acceptance
 - The idea has an agent-authored observable target; focused construction rounds and relevant feedback have current evidence rather than unsupported completion percentages.
@@ -110,7 +112,7 @@ After expansion, run the independent subagent review again on the final revision
 - The viewport/layout model is explicit, and relational insets/anchors are visually checked at appropriate sizes.
 - Concrete Taste principles are visible and linked to reference analysis.
 - All seven polish checks were applied with actual findings/fixes or explicit no-issue observations.
-- Required screens/states exist; components/tokens are actually used.
+- The screen inventory is covered and the scoped UI kit has editable sources and used instances. The page map identifies current screens, foundations, components and states.
 - Meaningful entities are contained and named; the layer tree is navigable, recurring UI is reused appropriately, and structural changes preserve appearance and references.
 - Actual viewport/native-scale review covers baseline and representative stress cases; fixtures and their invariants remain consistent.
 - Core tasks have explicit static-walkthrough evidence; human observation/playback/runtime status is separately labeled.
